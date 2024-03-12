@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    tools:context=".signIn"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:background="@drawable/logo"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Let's Eat"
+        android:gravity="center"
+        android:fontFamily="@font/yeonsungregular"
+        android:textSize="40dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sign Up Here For Your\nAdmin Dashboard"
+        android:gravity="center"
+        android:fontFamily="@font/latoregulear"
+        android:textColor="@color/GreenButton"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Choose Your Location"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="15dp"
+        android:textColor="@color/GreenButton"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
+        android:id="@+id/textInputLayout"
+        android:layout_width="match_parent"
+        android:layout_height="57dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        app:boxStrokeWidth="0dp"
+        app:boxStrokeWidthFocused="0dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/locationListofcity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/latoregulear"
+            android:layout_marginTop="7dp"
+            android:text="Your loction"
+            android:inputType="none"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/Name"
+        android:padding="15sp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/rectanglebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:drawableLeft="@drawable/usericon"
+        android:drawableStart="@drawable/usericon"
+        android:drawablePadding="10dp"
+        android:hint="Name"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/nameOfRestaurant"
+        android:padding="15sp"
+        android:background="@drawable/rectanglebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:drawableLeft="@drawable/homeicon"
+        android:drawableStart="@drawable/homeicon"
+        android:drawablePadding="10dp"
+        android:hint="Name of Restaurant "
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/email"
+        android:padding="15sp"
+        android:background="@drawable/rectanglebutton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:drawableLeft="@drawable/emailicon"
+        android:drawableStart="@drawable/emailicon"
+        android:drawablePadding="10dp"
+        android:hint="Email"
+        android:layout_marginRight="16dp"
+        android:layout_marginLeft="16dp"
+        android:textSize="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:passwordToggleEnabled="true"
+        android:layout_marginTop="3dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <EditText
+            android:padding="15sp"
+            android:background="@drawable/rectanglebutton"
+            android:id="@+id/Password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:layout_marginTop="7dp"
+            android:drawableLeft="@drawable/passwordicon"
+            android:drawableStart="@drawable/passwordicon"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:textSize="20dp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/CreateAccountButton"
+        android:layout_marginTop="10dp"
+        android:layout_width="152dp"
+        android:layout_height="70dp"
+        android:background="@drawable/button_color"
+        android:text="Create Account"
+        android:textColor="@color/white"
+        android:fontFamily="@font/yeonsungregular"
+        android:textSize="15dp"/>
+
+    <TextView
+        android:id="@+id/GoLoginPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:gravity="center"
+        android:text="Already Have An Account?"
+        android:textColor="@color/lightGreen"/>
+
+</LinearLayout>

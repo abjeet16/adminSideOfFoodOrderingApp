@@ -6,13 +6,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.example.adainfoodorderingapp.allMenuItem
 import com.example.adainfoodorderingapp.databinding.AllitemmenulayoutBinding
 import com.example.adainfoodorderingapp.model.AllMenu
-import com.google.firebase.database.core.Context
+import com.google.firebase.database.DatabaseReference
 
 class allMenuItemAdapter(
-    @SuppressLint("RestrictedApi") private val context: Context,
-    private val menulist:ArrayList<AllMenu>)
+    private val context: allMenuItem,
+    private val menulist: ArrayList<AllMenu>,
+    databaseReference: DatabaseReference
+)
     :RecyclerView.Adapter<allMenuItemAdapter.MyCartViewHolder>() {
 
     private val quantityOfItem = IntArray(menulist.size){1}
@@ -28,6 +31,16 @@ class allMenuItemAdapter(
             binding.foodPrice.text = menuItem.foodPrice
             Glide.with(context).load(uri).into(binding.foodImage)
             binding.quantityCartItem.text = quantity.toString()
+
+            binding.AddItem.setOnClickListener(){
+                addQuantity()
+            }
+            binding.DeleteItem.setOnClickListener(){
+                deleteQuantity()
+            }
+            binding.reduseItem.setOnClickListener(){
+                reduseQuantity()
+            }
         }
         fun reduseQuantity(){
             if (quantityOfItem[adapterPosition]>1) {

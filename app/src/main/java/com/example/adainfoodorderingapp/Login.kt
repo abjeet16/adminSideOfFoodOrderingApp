@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContract
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AppCompatDelegate
 import com.example.adainfoodorderingapp.databinding.ActivityLoginBinding
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -97,6 +98,7 @@ class Login : AppCompatActivity() {
     //open main screen if user is already signed in
     override fun onStart() {
         super.onStart()
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
         val currentUser =  fireBaseAuth.currentUser
         if (currentUser!=null)
             updateUI(user = null)

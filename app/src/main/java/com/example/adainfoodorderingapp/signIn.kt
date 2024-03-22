@@ -76,6 +76,6 @@ class signIn : AppCompatActivity() {
         val user = userModel(name,password,Email,NameofRestaurant)
         val UserId: String = FirebaseAuth.getInstance().currentUser!!.uid
         //saving user data in firebase
-        databaseReference.child("user").child(UserId).setValue(user)
+        databaseReference.child("Admin User").child(UserId).setValue(user)
     }
 }

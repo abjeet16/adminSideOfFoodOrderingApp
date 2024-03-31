@@ -37,6 +37,9 @@ class Login : AppCompatActivity() {
 
         fireBaseAuth = Firebase.auth
         databaseReference = Firebase.database.reference
+        if (fireBaseAuth.currentUser!=null){
+            updateUI(fireBaseAuth.currentUser)
+        }
         val googleSignOption= GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build()
         googleSignInClient = GoogleSignIn.getClient(this,googleSignOption)

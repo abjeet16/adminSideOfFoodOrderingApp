@@ -55,6 +55,7 @@
             android:layout_marginTop="10dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:inputType="number"
             android:fontFamily="@font/yeonsungregular"
             android:background="@drawable/rectanglebutton"
             android:hint="Food Price"

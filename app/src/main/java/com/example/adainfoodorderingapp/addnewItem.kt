@@ -40,7 +40,7 @@ class addnewItem : AppCompatActivity() {
 
         binding.addItemButton.setOnClickListener(){
             foodName = binding.itemName.text.toString().trim()
-            foodPrice = binding.itemPrice.text.toString().trim()
+            foodPrice = "Rs"+binding.itemPrice.text.toString().trim()
             foodDiscrebtion =  binding.ItemDescription.text.toString().trim()
             foodIngredent = binding.ItemIngredients.text.toString().trim()
             if (!(foodName.isBlank()||foodPrice.isBlank()||foodDiscrebtion.isBlank()||foodIngredent.isBlank())){
@@ -52,6 +52,9 @@ class addnewItem : AppCompatActivity() {
             }
         }
         binding.itemImageEditText.setOnClickListener(){
+            pickImage.launch("image/*")
+        }
+        binding.FoodImageView.setOnClickListener(){
             pickImage.launch("image/*")
         }
     }

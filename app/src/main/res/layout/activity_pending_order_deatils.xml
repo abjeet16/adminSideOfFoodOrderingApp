@@ -43,6 +43,7 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="10dp"
+            android:gravity="center"
             android:background="@drawable/profile_box_layout"
             android:elevation="1dp"
             android:paddingStart="16dp"
@@ -62,10 +63,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="#51 8th Cross"
+                android:textSize="15dp"
                 android:textColor="@color/GreenButton"
                 android:background="@android:color/transparent"
                 android:inputType="textMultiLine"
-                android:minHeight="100dp"
                 android:padding="7dp" />
         </LinearLayout>
 

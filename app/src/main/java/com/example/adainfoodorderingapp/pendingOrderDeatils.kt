@@ -3,6 +3,8 @@ package com.example.adainfoodorderingapp
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.adainfoodorderingapp.adapters.order_details_Adapter
+import com.example.adainfoodorderingapp.adapters.pendingOrderAdapter
 import com.example.adainfoodorderingapp.databinding.ActivityPendingOrderDeatilsBinding
 import com.example.adainfoodorderingapp.model.orderDetails
 
@@ -14,10 +16,10 @@ class pendingOrderDeatils : AppCompatActivity() {
     private var address:String?=null
     private var phoneNumber:String?=null
     private var totalPrize:String?=null
-    private var foodNames : MutableList<String> = mutableListOf()
-    private var foodPrices : MutableList<String> = mutableListOf()
-    private var foodQuantity : MutableList<Int> = mutableListOf()
-    private var foodImage : MutableList<String> = mutableListOf()
+    private var foodNames : ArrayList<String> = arrayListOf()
+    private var foodPrices : ArrayList<String> = arrayListOf()
+    private var foodQuantity : ArrayList<Int> = arrayListOf()
+    private var foodImage : ArrayList<String> = arrayListOf()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -29,26 +31,26 @@ class pendingOrderDeatils : AppCompatActivity() {
     }
 
     private fun getDataFromIntent() {
-        val receivedOrderDetails = intent.getParcelableExtra<orderDetails>("userOrderDetails")
-        if (receivedOrderDetails!=null){
-            userName = receivedOrderDetails.userName
-            foodNames = receivedOrderDetails.foodNames!!
-            foodImage = receivedOrderDetails.foodImage!!
-            foodQuantity = receivedOrderDetails.foodQuantity!!
-            address = receivedOrderDetails.Address
-            phoneNumber = receivedOrderDetails.phoneNumber
-            foodPrices = receivedOrderDetails.foodPrice!!
-            totalPrize = receivedOrderDetails.totalPrice
+        val receivedOrderDetails = intent.getSerializableExtra("userOrderDetails") as orderDetails
+        receivedOrderDetails?.let { orderDetails ->
+                userName = receivedOrderDetails.userName
+                foodNames = receivedOrderDetails.foodNames as ArrayList<String>
+                foodImage = receivedOrderDetails.foodImage as ArrayList<String>
+                foodQuantity = receivedOrderDetails.foodQuantity as ArrayList<Int>
+                address = receivedOrderDetails.Address
+                phoneNumber = receivedOrderDetails.phoneNumber
+                foodPrices = receivedOrderDetails.foodPrice as ArrayList<String>
+                totalPrize = receivedOrderDetails.totalPrice
 
-            setUserDetails()
-            setAdapter()
+                setUserDetails()
+                setAdapter()
         }
     }
 
     private fun setAdapter() {
         binding.RecyclearView.layoutManager = LinearLayoutManager(this)
-        val adapter =
-        binding.RecyclearView.adapter =
+        val adapter = order_details_Adapter(this,foodNames,foodImage,foodQuantity,foodPrices)
+        binding.RecyclearView.adapter = adapter
     }
 
     private fun setUserDetails() {

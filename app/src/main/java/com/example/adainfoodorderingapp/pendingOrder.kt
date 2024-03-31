@@ -21,7 +21,7 @@ class pendingOrder : AppCompatActivity(),pendingOrderAdapter.OnItemClicked {
     private var listOfName:MutableList<String> = mutableListOf()
     private var listOfPrice:MutableList<String> = mutableListOf()
     private var listOfImage:MutableList<String> = mutableListOf()
-    private var listOfOrderItem:MutableList<orderDetails> = mutableListOf()
+    private var listOfOrderItem:ArrayList<orderDetails> = arrayListOf()
     private lateinit var database: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {

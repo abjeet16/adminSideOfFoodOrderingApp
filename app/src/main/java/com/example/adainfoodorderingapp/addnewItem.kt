@@ -35,7 +35,7 @@ class addnewItem : AppCompatActivity() {
         database = FirebaseDatabase.getInstance()
 
         binding.backButton.setOnClickListener(){
-            finish();
+            finish()
         }
 
         binding.addItemButton.setOnClickListener(){

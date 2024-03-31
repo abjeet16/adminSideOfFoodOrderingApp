@@ -40,25 +40,13 @@
                 android:id="@+id/customerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
+                android:layout_marginStart="15dp"
+                android:fontFamily="@font/yeonsungregular"
                 android:text="Name Customer"
-                android:fontFamily="@font/yeonsungregular"
                 android:textSize="22dp"
-                app:layout_constraintBottom_toTopOf="@+id/quantity"
-                app:layout_constraintStart_toEndOf="@+id/FoodImage"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/quantityNOTTOUSE"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="quantity"
-                android:layout_marginStart="10dp"
-                android:fontFamily="@font/yeonsungregular"
-                android:textSize="18dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/FoodImage"
-                app:layout_constraintTop_toBottomOf="@+id/customerName" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/quantity"
@@ -66,11 +54,9 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/lato_bold"
                 android:text="5"
-                android:layout_marginStart="15dp"
                 android:textColor="@color/GreenButton"
                 android:textSize="25dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/quantityNOTTOUSE"
+                app:layout_constraintStart_toStartOf="@+id/customerName"
                 app:layout_constraintTop_toBottomOf="@+id/customerName" />
 
             <androidx.appcompat.widget.AppCompatButton

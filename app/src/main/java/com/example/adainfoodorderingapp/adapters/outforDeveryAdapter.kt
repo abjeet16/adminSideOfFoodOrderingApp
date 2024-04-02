@@ -20,7 +20,7 @@ class outforDeveryAdapter(private val CustomerName:MutableList<String>
                 }else{
                     paymentSatus.text = "Not Received"
                 }
-                val colormap = mapOf(true to Color.RED,false to Color.GREEN)
+                val colormap = mapOf(false to Color.RED,true to Color.GREEN)
                 paymentSatus.setTextColor(colormap[PaymentStatus[position]]?:Color.GRAY)
                 deliveryStatus.backgroundTintList = ColorStateList.valueOf(colormap[PaymentStatus[position]]?:Color.GRAY)
             }

@@ -2,6 +2,7 @@ package com.example.adainfoodorderingapp
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.adainfoodorderingapp.adapters.outforDeveryAdapter
 import com.example.adainfoodorderingapp.databinding.ActivityOutForDeliveryBinding
@@ -38,12 +39,11 @@ class OutForDelivery : AppCompatActivity() {
                 // remove all old data in list
                 listOfCompleteOrderList.clear()
                 for (orderSnapShot in snapshot.children){
-                    val completeOrder = snapshot.getValue(orderDetails::class.java)
+                    val completeOrder = orderSnapShot.getValue(orderDetails::class.java)
                     completeOrder?.let {
                         listOfCompleteOrderList.add(it)
                     }
                 }
-                listOfCompleteOrderList.reverse()
                 setDataIntoRecyclerview()
             }
 

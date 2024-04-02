@@ -19,6 +19,8 @@ class pendingOrderAdapter(private val CustomerName: MutableList<String>,
     :RecyclerView.Adapter<pendingOrderAdapter.ViewHolder>() {
         interface OnItemClicked{
             fun OnItemClickListener(position:Int)
+            fun OnItemAcceptClickListner(position: Int)
+            fun OnItemDispatchClickListner(position: Int)
         }
     inner class ViewHolder(private val binding:PendingorderlayoutBinding):RecyclerView.ViewHolder(binding.root) {
         private var OrderAccepted = false
@@ -41,10 +43,12 @@ class pendingOrderAdapter(private val CustomerName: MutableList<String>,
                             text = "Dispatch"
                             OrderAccepted = true
                             showToast("Order Accepted")
+                            itemClicked.OnItemAcceptClickListner(position)
                         }else{
                             CustomerName.removeAt(adapterPosition)
                             notifyItemRemoved(adapterPosition)
                             showToast("Order Dispatched")
+                            itemClicked.OnItemDispatchClickListner(position)
                         }
                     }
                 }

@@ -112,11 +112,11 @@
                     android:textSize="20dp" />
 
                 <TextView
+                    android:id="@+id/CompletedOrderCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:fontFamily="@font/yeonsungregular"
-                    android:text="40"
                     android:textColor="#FEAD1D"
                     android:textSize="25dp" />
             </LinearLayout>
@@ -146,6 +146,7 @@
                     android:textSize="20dp" />
 
                 <TextView
+                    android:id="@+id/totalEarning"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"

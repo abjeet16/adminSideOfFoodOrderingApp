@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.adainfoodorderingapp.databinding.ActivityMain2Binding
+import com.example.adainfoodorderingapp.model.orderDetails
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -23,6 +24,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         firebaseAuth = FirebaseAuth.getInstance()
+        database = FirebaseDatabase.getInstance()
+
+        CheckForPendingOrder()
+        CheckForCompletedOrder()
+        TotalEarning()
 
         binding.addToMenu.setOnClickListener(){
             startActivity(Intent(this,addnewItem::class.java))
@@ -47,10 +53,46 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,Login::class.java))
             finish()
         }
-        CheckForPendingOrder()
     }
+
+    private fun TotalEarning() {
+        var listOfTotalPay = mutableListOf<Int>()
+        var PriceInString:Int
+         completedOrderReference= database.reference.child("CompletedOrder")
+        completedOrderReference.addListenerForSingleValueEvent(object :ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                for (orderSnapShot in snapshot.children){
+                    var completeOrder = orderSnapShot.getValue(orderDetails::class.java)
+                    completeOrder?.totalPrice?.let {i->
+                        PriceInString = i.drop(2).toInt()
+                        listOfTotalPay.add(PriceInString)
+                    }
+                }
+                binding.totalEarning.text = "Rs"+listOfTotalPay.sum().toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
+    private fun CheckForCompletedOrder() {
+        var CompletedOrderReference = database.reference.child("CompletedOrder")
+        var CompletedOrderCount = 0
+        CompletedOrderReference.addListenerForSingleValueEvent(object :ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                CompletedOrderCount = snapshot.childrenCount.toInt()
+                binding.CompletedOrderCount.text = CompletedOrderCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+
+        })
+    }
+
     fun CheckForPendingOrder() {
-        database = FirebaseDatabase.getInstance()
         var pendingOrderReference = database.reference.child("order details")
         var pendingOrderItemCount = 0
         pendingOrderReference.addListenerForSingleValueEvent(object : ValueEventListener{
@@ -60,7 +102,6 @@ class MainActivity : AppCompatActivity() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-
             }
 
         })

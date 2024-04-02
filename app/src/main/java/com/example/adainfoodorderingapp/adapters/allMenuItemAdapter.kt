@@ -17,48 +17,18 @@ class allMenuItemAdapter(
     databaseReference: DatabaseReference
 )
     :RecyclerView.Adapter<allMenuItemAdapter.MyCartViewHolder>() {
-
-    private val quantityOfItem = IntArray(menulist.size){1}
     inner class MyCartViewHolder(private val binding:AllitemmenulayoutBinding)
         :RecyclerView.ViewHolder(binding.root){
-        private val Image = binding.foodImage
         fun bind(position: Int) {
-            val quantity = quantityOfItem[position]
             val menuItem = menulist[position]
             val uriString = menuItem.foodImage
             val uri = Uri.parse(uriString)
             binding.foodName.text = menuItem.foodName
             binding.foodPrice.text = menuItem.foodPrice
             Glide.with(context).load(uri).into(binding.foodImage)
-            binding.quantityCartItem.text = quantity.toString()
 
-            binding.AddItem.setOnClickListener(){
-                addQuantity()
-            }
-            binding.DeleteItem.setOnClickListener(){
-                deleteQuantity()
-            }
-            binding.reduseItem.setOnClickListener(){
-                reduseQuantity()
-            }
-        }
-        fun reduseQuantity(){
-            if (quantityOfItem[adapterPosition]>1) {
-                quantityOfItem[adapterPosition]--
-                binding.quantityCartItem.text = quantityOfItem[adapterPosition].toString()
-            }
-        }
-        fun deleteQuantity(){
-            menulist.removeAt(adapterPosition)
-            menulist.removeAt(adapterPosition)
-            menulist.removeAt(adapterPosition)
-            notifyItemRemoved(adapterPosition)
-            notifyItemChanged(adapterPosition,menulist.size)
-        }
-        fun addQuantity(){
-            if (quantityOfItem[adapterPosition]<10) {
-                quantityOfItem[adapterPosition]++
-                binding.quantityCartItem.text = quantityOfItem[adapterPosition].toString()
+            binding.DeleteItem.setOnClickListener{
+
             }
         }
     }

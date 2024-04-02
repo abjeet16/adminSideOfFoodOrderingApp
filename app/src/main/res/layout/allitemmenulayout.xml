@@ -32,6 +32,7 @@
                 app:shapeAppearanceOverlay="@style/roundImageView" />
 
             <LinearLayout
+                android:id="@+id/linearLayout11"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginStart="10dp"
@@ -63,56 +64,15 @@
                     android:textSize="17dp" />
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginEnd="10dp"
-                android:gravity="center"
-                android:orientation="vertical"
+            <ImageButton
+                android:id="@+id/DeleteItem"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:background="@drawable/trash"
+                android:layout_marginEnd="20dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.0">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="4dp"
-                    android:gravity="center">
-
-                    <ImageButton
-                        android:id="@+id/reduseItem"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginEnd="3dp"
-                        android:background="@drawable/iconminus" />
-
-                    <TextView
-                        android:id="@+id/quantityCartItem"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="3dp"
-                        android:layout_marginEnd="3dp"
-                        android:fontFamily="@font/latoextrabold"
-                        android:text="0"
-                        android:textSize="20dp" />
-
-                    <ImageButton
-                        android:id="@+id/AddItem"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="3dp"
-                        android:background="@drawable/plusicon" />
-                </LinearLayout>
-
-                <ImageButton
-                    android:id="@+id/DeleteItem"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginTop="4dp"
-                    android:background="@drawable/trash" />
-            </LinearLayout>
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>

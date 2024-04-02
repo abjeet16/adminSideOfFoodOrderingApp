@@ -5,12 +5,19 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.adainfoodorderingapp.databinding.ActivityMain2Binding
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 
 class MainActivity : AppCompatActivity() {
     private val binding:ActivityMain2Binding by lazy {
         ActivityMain2Binding.inflate(layoutInflater)
     }
+    private lateinit var database:FirebaseDatabase
     private lateinit var firebaseAuth: FirebaseAuth
+    private lateinit var completedOrderReference: DatabaseReference
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
@@ -40,5 +47,22 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this,Login::class.java))
             finish()
         }
+        CheckForPendingOrder()
+    }
+    fun CheckForPendingOrder() {
+        database = FirebaseDatabase.getInstance()
+        var pendingOrderReference = database.reference.child("order details")
+        var pendingOrderItemCount = 0
+        pendingOrderReference.addListenerForSingleValueEvent(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                pendingOrderItemCount = snapshot.childrenCount.toInt()
+                binding.pendingOrderCount.text = pendingOrderItemCount.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+
+            }
+
+        })
     }
 }

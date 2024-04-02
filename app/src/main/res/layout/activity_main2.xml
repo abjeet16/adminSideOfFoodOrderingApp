@@ -76,12 +76,12 @@
                     android:textSize="20dp" />
 
                 <TextView
+                    android:id="@+id/pendingOrderCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:textColor="@color/black"
                     android:fontFamily="@font/yeonsungregular"
-                    android:text="40"
                     android:textSize="25dp" />
             </LinearLayout>
 

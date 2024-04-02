@@ -87,7 +87,7 @@ class pendingOrder : AppCompatActivity(),pendingOrderAdapter.OnItemClicked {
             database.reference.child("order details").child(it)
         }
         //getting details of accepted order and saving them into new nude accepted Order
-        clickItemOrderReference?.child("accepted Order")?.setValue(true)
+        clickItemOrderReference?.child("orderAccepted")?.setValue(true)
         updateOrderAcceptStatus(position)
     }
 
@@ -106,7 +106,7 @@ class pendingOrder : AppCompatActivity(),pendingOrderAdapter.OnItemClicked {
         val pushKeyOfClickedItem = listOfOrderItem[position].itemPushKey
         val buyHistoryReference = database.reference.child("Customer").child(userIdOfClickedItem!!)
             .child("Buy History").child(pushKeyOfClickedItem!!)
-        buyHistoryReference.child("AcceptedOrder").setValue(true)
+        buyHistoryReference.child("orderAccepted").setValue(true)
         databaseReference.child(pushKeyOfClickedItem).child("AcceptedOrder").setValue(true)
     }
     private fun deleteItemFromOrderDetails(dispatchItemPushKey: String){

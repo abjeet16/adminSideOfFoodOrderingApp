@@ -8,15 +8,19 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.adainfoodorderingapp.databinding.AllitemmenulayoutBinding
 import com.example.adainfoodorderingapp.databinding.OutfordeverylayoutBinding
 
-class outforDeveryAdapter(private val CustomerName:ArrayList<String>
-                            ,private val PaymentStatus:ArrayList<String>)
+class outforDeveryAdapter(private val CustomerName:MutableList<String>
+                            ,private val PaymentStatus:MutableList<Boolean>)
     : RecyclerView.Adapter<outforDeveryAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: OutfordeverylayoutBinding):RecyclerView.ViewHolder(binding.root) {
         fun bind(position: Int) {
             binding.apply {
                 customerName.text = CustomerName[position]
-                paymentSatus.text = PaymentStatus[position]
-                val colormap = mapOf("Not Received" to Color.RED,"Received" to Color.GREEN)
+                if (PaymentStatus[position]==true){
+                    paymentSatus.text = "Received"
+                }else{
+                    paymentSatus.text = "Not Received"
+                }
+                val colormap = mapOf(true to Color.RED,false to Color.GREEN)
                 paymentSatus.setTextColor(colormap[PaymentStatus[position]]?:Color.GRAY)
                 deliveryStatus.backgroundTintList = ColorStateList.valueOf(colormap[PaymentStatus[position]]?:Color.GRAY)
             }
